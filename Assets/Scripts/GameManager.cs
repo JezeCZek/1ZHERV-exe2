@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     /// GameObject used for the start text.
     /// </summary>
     public GameObject startText;
-    
+
+    public GameObject controllText;
+
     /// <summary>
     /// GameObject used for the loss text.
     /// </summary>
@@ -88,6 +90,11 @@ public class GameManager : MonoBehaviour
         // Start the game after the first "Jump".
         if (!sGameStarted && Input.GetButtonDown("Jump"))
         { StartGame(); }
+
+        if (controllText.activeInHierarchy && (Input.GetButtonDown("Jump") || Input.GetButtonDown("Vertical")))
+        {
+            controllText.SetActive(false);
+        }
         
         // Reset the game if requested.
         if (Input.GetButtonDown("Cancel"))
@@ -118,6 +125,7 @@ public class GameManager : MonoBehaviour
             startText.SetActive(false);
             scoreText.SetActive(true);
             lossText.SetActive(false);
+            controllText.SetActive(true);
         }
         else
         { // Setup a new game -> Wait for start.
@@ -128,6 +136,7 @@ public class GameManager : MonoBehaviour
             startText.SetActive(true);
             scoreText.SetActive(false);
             lossText.SetActive(false);
+            controllText.SetActive(false);
         }
         
         // Set the state.
@@ -140,7 +149,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         // Reload the scene as started.
-        sGameStarted = true; 
+        sGameStarted = true;
         ResetGame();
     }
     
