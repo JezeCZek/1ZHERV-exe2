@@ -12,12 +12,12 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Uncollidable
+  - Player
+  - Ground
+  - Obstacle
+  - Spawn
+  - Despawn
   - 
   - 
   - 
